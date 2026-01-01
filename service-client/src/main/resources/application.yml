@@ -12,16 +12,11 @@ spring:
         health-check-path: /actuator/health
         health-check-interval: 10s
         instance-id: ${spring.application.name}:${random.value}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
+        service-name: service-client
+        register: true
 
 management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: health,info,metrics

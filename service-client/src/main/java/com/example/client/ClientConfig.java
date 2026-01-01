@@ -11,13 +11,23 @@ public class ClientConfig {
 
     @Bean
     @LoadBalanced
-    public RestTemplate restTemplate() {
+    public RestTemplate loadBalancedRestTemplate() {
         return new RestTemplate();
     }
 
     @Bean
     @LoadBalanced
-    public WebClient.Builder webClientBuilder() {
+    public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();
+    }
+
+    @Bean("directRestTemplate")
+    public RestTemplate directRestTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean("directWebClientBuilder")
+    public WebClient.Builder directWebClientBuilder() {
         return WebClient.builder();
     }
 }
